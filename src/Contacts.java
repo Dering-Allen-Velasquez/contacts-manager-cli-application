@@ -1,11 +1,12 @@
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class Contacts {
-    private static Path path = Paths.get("./src/contacts.txt");
+    private static final Path path = Paths.get("./src/contacts.txt");
     private static ArrayList<Contact> contacts = new ArrayList<>();
 
     public static void loadContacts() {
@@ -30,30 +31,47 @@ public class Contacts {
         return contacts;
     }
 
-    public static void addContacts(ArrayList<String> strings) {
-        for (String string:strings) {
-        String[] contactInfo = new String[2], name = new String[2];
-         contactInfo = string.split(":::");
+    public static ArrayList<Contact> searchContacts(String searchInput) {
+        ArrayList<Contact> bucket = new ArrayList<>();
+        for (Contact contact : contacts) {
+            if (contact.getName().toLowerCase().contains(searchInput) || contact.getNumber().contains(searchInput)) {
+                bucket.add(contact);
+            }
+        }
 
-        Contact contact = new Contact(contactInfo);
-        contacts.add(contact);
+        return bucket;
+    }
+
+    public static void addContact(String[] contactInfo) {
+        contacts.add(new Contact(contactInfo));
+    }
+
+    public static void deleteContact(int number) {
+        contacts.remove(number);
+    }
+
+    public static void addContacts(ArrayList<String> strings) {
+        for (String string : strings) {
+            String[] contactInfo = new String[2], name = new String[2];
+            contactInfo = string.split(":::");
+
+            addContact(contactInfo);
         }
     }
 
-    public static void saveContacts(){
+    public static void saveContacts() {
         ArrayList<String> contactStrings = new ArrayList<>();
-        for (Contact contact: contacts) {
+        for (Contact contact : contacts) {
             String string = contact.getName() + ":::" + contact.getNumber();
             contactStrings.add(string);
-            }
+        }
 //            contactStrings.add("Tracy:::2105555555");
         try {
-            Files.write(path,contactStrings);
+            Files.write(path, contactStrings);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 
 
     public static void main(String[] args) {
