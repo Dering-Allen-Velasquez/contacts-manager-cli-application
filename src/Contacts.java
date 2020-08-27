@@ -13,6 +13,7 @@ public class Contacts {
             try {
                 ArrayList<String> allContacts = (ArrayList<String>) Files.readAllLines(path);
                 System.out.println(allContacts);
+                addContacts(allContacts);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -25,10 +26,14 @@ public class Contacts {
         }
     }
 
+    public static ArrayList<Contact> getContacts() {
+        return contacts;
+    }
+
     public static void addContacts(ArrayList<String> strings) {
         for (String string:strings) {
         String[] contactInfo = new String[2], name = new String[2];
-         contactInfo = string.split("\\[|]");
+         contactInfo = string.split(":::");
 
         Contact contact = new Contact(contactInfo);
         contacts.add(contact);
@@ -36,14 +41,24 @@ public class Contacts {
     }
 
     public static void saveContacts(){
-        ArrayList<String> contactString = new ArrayList<>();
+        ArrayList<String> contactStrings = new ArrayList<>();
         for (Contact contact: contacts) {
-            String string = contact.getName() + "[|]" + contact.getNumber();
+            String string = contact.getName() + ":::" + contact.getNumber();
+            contactStrings.add(string);
             }
+//            contactStrings.add("Tracy:::2105555555");
+        try {
+            Files.write(path,contactStrings);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+
 
     public static void main(String[] args) {
         loadContacts();
+        saveContacts();
     }
 }
 

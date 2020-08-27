@@ -1,11 +1,11 @@
 public class Contact {
 //for each individual contact
     private String name;
-    private int number;
+    private String number;
 
     public Contact(String[] contactInfo) {
         this.name = contactInfo[0];
-        this.number = Integer.parseInt(contactInfo[1]);
+        this.number = contactInfo[1];
     }
 
     public String getName() {
@@ -16,11 +16,11 @@ public class Contact {
         this.name = name;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
