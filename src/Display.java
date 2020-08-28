@@ -10,15 +10,17 @@ public class Display {
                 "3. Add a new contact \n" +
                 "4. Delete a contact\n" +
                 "5. Edit a contact \n" +
-                "6. Exit"
+                "6. Exit\n"
         );
     }
 
     public static void showContacts(ArrayList<Contact> contacts) {
+        System.out.printf("%-22s | %-13s\n", "  Name", "Phone Number");
+        System.out.println("---------------------------------------");
         for(int i=0; i<contacts.size(); i++) {
-            // Do this later : create ifs - change column line up
             System.out.printf("%3d. %-17s | %13s\n", i+1, contacts.get(i).getName(), formatPhone(contacts.get(i).getNumber()));
         }
+        System.out.println("");
     }
 
     public static String formatPhone(String phoneNumber) {

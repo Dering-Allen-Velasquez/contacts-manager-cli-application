@@ -16,18 +16,6 @@ public class Input {
         return scanner.nextLine();
     }
 
-    public String getString(String message, int length) {
-        System.out.print(message);
-        String line = scanner.nextLine();
-        if(line.length() > length) {
-            System.out.println(length + " characters or less");
-            line = getString(message,length);
-        } else if(line.length() == 0) {
-            System.out.println("Please enter anything");
-        }
-        return line;
-    }
-
     public int getInt() {
         int number;
         try {
@@ -38,12 +26,13 @@ public class Input {
         return number;
     }
 
-    public int getInt(int min, int max) {
+    public int getInt(int min, int max, String message) {
+        System.out.print(message);
         int number = getInt();
 
         if (number < min || number > max) {
             System.out.println("Error: Invalid Input");
-            number = getInt(min, max);
+            number = getInt(min, max, message);
         }
 
         return number;

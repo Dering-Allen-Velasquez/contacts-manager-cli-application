@@ -12,7 +12,6 @@ public class Contacts {
         if (Files.exists(path)) {
             try {
                 ArrayList<String> allContacts = (ArrayList<String>) Files.readAllLines(path);
-                System.out.println(allContacts);
                 addContacts(allContacts);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -51,7 +50,9 @@ public class Contacts {
     }
 
     public static void deleteContact(int number) {
+        System.out.println("You have deleted " + contacts.get(number).getName());
         contacts.remove(number);
+
     }
 
     public static void addContacts(ArrayList<String> strings) {
@@ -75,11 +76,20 @@ public class Contacts {
     public static void editContact(int contact) {
         Input input = new Input();
         Contact contactToEdit = contacts.get(contact);
+        String previousName = contactToEdit.getName();
+        String previousNumber = contactToEdit.getNumber();
         contactToEdit.setName(input.getString("Enter new name for "+ contactToEdit.getName() +": "));
+        if (contactToEdit.getName().isEmpty()){
+            contactToEdit.setName(previousName);
+        }
         contactToEdit.setNumber(input.getString("Enter new number instead of "+ contactToEdit.getNumber() +": "));
+        if (contactToEdit.getNumber().isEmpty()){
+        contactToEdit.setNumber(previousNumber);
+        }
         if(!Verify.phone(contactToEdit.getNumber())) {
             editContact(contact);
         }
+        System.out.println("");
     }
 
     public static void saveContacts() {
