@@ -38,6 +38,11 @@ public class Contacts {
             }
         }
 
+        if(bucket.isEmpty()) {
+            System.out.println("No Results found");
+            return contacts;
+        }
+
         return bucket;
     }
 
