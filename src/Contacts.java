@@ -64,14 +64,20 @@ public class Contacts {
         contactInfo[0] = input.getString("Enter name: ");
         contactInfo[1] = input.getString("Enter number: ");
 
+        if(!Verify.phone(contactInfo[1])) {
+            newContact();
+        }
         addContact(contactInfo);
     }
 
-    public static void editContact() {
+    public static void editContact(int contact) {
         Input input = new Input();
-        Contact contactToEdit = contacts.get(input.getInt()-1);
-        contactToEdit.setName(input.getString("Enter new name: "));
-        contactToEdit.setNumber(input.getString("Enter new number: "));
+        Contact contactToEdit = contacts.get(contact);
+        contactToEdit.setName(input.getString("Enter new name for "+ contactToEdit.getName() +": "));
+        contactToEdit.setNumber(input.getString("Enter new number instead of "+ contactToEdit.getNumber() +": "));
+        if(!Verify.phone(contactToEdit.getNumber())) {
+            editContact(contact);
+        }
     }
 
     public static void saveContacts() {
@@ -85,12 +91,6 @@ public class Contacts {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-
-    public static void main(String[] args) {
-        loadContacts();
-        saveContacts();
     }
 }
 

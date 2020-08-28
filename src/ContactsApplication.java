@@ -32,7 +32,7 @@ public class ContactsApplication {
                 Contacts.deleteContact(input.getInt(1,Contacts.getContacts().size())-1);
                 break;
             case 5:
-                Contacts.editContact();
+                Contacts.editContact(input.getInt(1,Contacts.getContacts().size())-1);
                 break;
             case 6:
                 return;
