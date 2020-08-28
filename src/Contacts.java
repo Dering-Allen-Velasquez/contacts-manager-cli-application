@@ -69,9 +69,6 @@ public class Contacts {
         contactInfo[0] = input.getString("Enter name: ");
         contactInfo[1] = input.getString("Enter number: ");
 
-        if(!Verify.phone(contactInfo[1])) {
-            newContact();
-        }
         addContact(contactInfo);
     }
 

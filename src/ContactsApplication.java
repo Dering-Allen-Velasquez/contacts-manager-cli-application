@@ -43,42 +43,6 @@ public class ContactsApplication {
         Contacts.saveContacts();
         mainThread();
     }
-
-//    public static void inputSwitch() {
-//        Input input1 = new Input();
-//
-//        // input variable
-//        int input = input1.getInt();
-//        switch (input) {
-//            case 1:
-//                Display.showContacts(Contacts.getContacts());
-//                break;
-//            case 2:
-//                Display.showContacts(Contacts.searchContacts(input1.getString().toLowerCase()));
-//                break;
-//            case 3:
-//                Contacts.newContact();
-////                Contacts.addContact(Input.getContact());
-//                break;
-//            case 4:
-//                int input3 = scanner.nextInt() - 1;
-//                Contacts.deleteContact(input3);
-//                break;
-//            case 5:
-//                // Edit
-//                Contact contactToEdit = Contacts.getContacts().get(input1.getInt() - 1);
-//                contactToEdit.setName(input1.getString());
-//                contactToEdit.setNumber(input1.getString());
-//                break;
-//            case 6:
-//                System.out.println("Goodbye.");
-//                return;
-//            default:
-//                System.out.println("Sorry " + input + "is not a valid option. Try again.");
-//        }
-//        Contacts.saveContacts();
-//        mainThread();
-//    }
 }
 
 
