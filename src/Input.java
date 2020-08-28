@@ -9,6 +9,7 @@ public class Input {
     }
 
     public static String getString() {
+        scanner.nextLine();
         return scanner.nextLine();
     }
 
@@ -17,13 +18,20 @@ public class Input {
         return scanner.nextLine();
     }
 
-    public static String[] getContact(){
+    public static String[] getContact() {
         String[] contactInfo = new String[2];
-        System.out.println("Enter name: ");
-        contactInfo[0] = getString();
-        System.out.println("Enter phone number: ");
-        contactInfo[1] = getString();
+        contactInfo[0] = getString("Enter name: ");
+        scanner.next();
+        contactInfo[1] = getString("Enter number: ");
+        scanner.next();
+
+        System.out.println(contactInfo[0]);
+
         return contactInfo;
-        }
+    }
+
+//    public static String[] getContact(){
+//        return contactInfo;
+//        }
 
 }

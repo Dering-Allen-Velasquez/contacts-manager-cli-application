@@ -58,6 +58,15 @@ public class Contacts {
         }
     }
 
+    public static void newContact() {
+        System.out.println("new contact");
+        String[] contactInfo = new String[2];
+        contactInfo[0] = Input.getString();
+        contactInfo[1] = Input.getString();
+        System.out.println(contactInfo[0]);
+        System.out.println(contactInfo[1]);
+    }
+
     public static void saveContacts() {
         ArrayList<String> contactStrings = new ArrayList<>();
         for (Contact contact : contacts) {

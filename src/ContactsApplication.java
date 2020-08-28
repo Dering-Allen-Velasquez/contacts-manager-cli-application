@@ -23,14 +23,18 @@ public class ContactsApplication {
                 Display.showContacts(Contacts.searchContacts(Input.getString("Please enter a name: ").toLowerCase()));
                 break;
             case 3:
-                Contacts.addContact(Input.getContact());
+                Contacts.newContact();
+//                Contacts.addContact(Input.getContact());
                 break;
             case 4:
                 int input3 = scanner.nextInt();
                 Contacts.deleteContact(input3);
                 break;
             case 5:
-                //
+                // Edit
+                Contact contactToEdit = Contacts.getContacts().get(Input.getInt("Which contact # to edit: ") - 1);
+                contactToEdit.setName(Input.getString("Enter a new name: "));
+                contactToEdit.setNumber(Input.getString("Enter a new number: "));
                 break;
             case 6:
                 System.out.println("Goodbye.");
