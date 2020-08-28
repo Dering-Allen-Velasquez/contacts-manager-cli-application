@@ -1,5 +1,4 @@
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -65,7 +64,6 @@ public class Contacts {
             String string = contact.getName() + ":::" + contact.getNumber();
             contactStrings.add(string);
         }
-//            contactStrings.add("Tracy:::2105555555");
         try {
             Files.write(path, contactStrings);
         } catch (IOException e) {

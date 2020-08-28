@@ -1,9 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class Display {
-    public static final Scanner scanner = new Scanner(System.in);
 
     public static void menu() {
         System.out.println(
@@ -21,10 +19,6 @@ public class Display {
             // Do this later : create ifs - change column line up
             System.out.printf("%3d. %-17s | %13s\n", i+1, contacts.get(i).getName(), formatPhone(contacts.get(i).getNumber()));
         }
-//        for (Contact contact : contacts) {
-//            System.out.printf("%-17s | %13s\n", contact.getName(), formatPhone(contact.getNumber()));
-////            System.out.println(contact.getName() + " | " + formatPhone(contact.getNumber()));
-//        }
     }
 
     public static String formatPhone(String phoneNumber) {

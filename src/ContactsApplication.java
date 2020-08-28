@@ -1,23 +1,17 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class ContactsApplication {
     public static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        int intInput;
         Contacts.loadContacts();
-        boolean run = true;
-        int input;
 
         do {
             Display.menu();
-            input = scanner.nextInt();
-            run = inputSwitch(input);
-        } while(run);
-        Contacts.saveContacts();
+            intInput = Input.getInt("Input Choice Number: ");
+            inputSwitch(intInput);
+        } while (true);
     }
 
     public static boolean inputSwitch(int input) {
@@ -26,11 +20,10 @@ public class ContactsApplication {
                 Display.showContacts(Contacts.getContacts());
                 break;
             case 2:
-                String input2 = scanner.next();
-                Display.showContacts(Contacts.searchContacts(input2.toLowerCase()));
+                Display.showContacts(Contacts.searchContacts(Input.getString("Please enter a name: ").toLowerCase()));
                 break;
             case 3:
-                //
+                Contacts.addContact(Input.getContact());
                 break;
             case 4:
                 int input3 = scanner.nextInt();
@@ -45,7 +38,7 @@ public class ContactsApplication {
             default:
                 System.out.println("Sorry " + input + "is not a valid option. Try again.");
         }
-
+        Contacts.saveContacts();
         return true;
     }
 }

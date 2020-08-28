@@ -1,5 +1,4 @@
 public class Contact {
-//for each individual contact
     private String name;
     private String number;
 
