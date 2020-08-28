@@ -59,12 +59,19 @@ public class Contacts {
     }
 
     public static void newContact() {
-        System.out.println("new contact");
+        Input input = new Input();
         String[] contactInfo = new String[2];
-        contactInfo[0] = Input.getString();
-        contactInfo[1] = Input.getString();
-        System.out.println(contactInfo[0]);
-        System.out.println(contactInfo[1]);
+        contactInfo[0] = input.getString("Enter name: ");
+        contactInfo[1] = input.getString("Enter number: ");
+
+        addContact(contactInfo);
+    }
+
+    public static void editContact() {
+        Input input = new Input();
+        Contact contactToEdit = contacts.get(input.getInt()-1);
+        contactToEdit.setName(input.getString("Enter new name: "));
+        contactToEdit.setNumber(input.getString("Enter new number: "));
     }
 
     public static void saveContacts() {
