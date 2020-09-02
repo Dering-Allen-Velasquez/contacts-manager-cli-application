@@ -15,10 +15,10 @@ public class Display {
     }
 
     public static void showContacts(ArrayList<Contact> contacts) {
-        System.out.printf("%-22s | %-13s\n", "  Name", "Phone Number");
+        System.out.printf("%-22s | %13s\n", "  Name", "Phone Number");
         System.out.println("---------------------------------------");
         for(int i=0; i<contacts.size(); i++) {
-            System.out.printf("%3d. %-17s | %13s\n", i+1, contacts.get(i).getName(), formatPhone(contacts.get(i).getNumber()));
+            System.out.printf("%3d. %-17s | %15s\n", i+1, contacts.get(i).getName(), formatPhone(contacts.get(i).getNumber()));
         }
         System.out.println("");
     }
